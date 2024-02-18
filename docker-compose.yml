@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    image: chasney/chatgpt-share-web:latest
+    ports:
+      - "3003:5000"
+    volumes:
+      - ./config.py:/app/config.py
+      - ./instance:/app/instance
+      - ./dist/favicon.ico:/app/dist/favicon.ico
+    depends_on:
+      - redis
+    environment:
+      - REDIS_URL=redis://redis:6379
+      - FIRST_RUN=True
+
+
+  redis:
+    image: redis
+    ports:
+      - "6380:6379"
