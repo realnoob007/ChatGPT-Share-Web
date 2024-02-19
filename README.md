@@ -107,7 +107,30 @@
 
 ## 安装
 
-详细的安装指南正在准备中，请保持关注。
+1. 克隆此部署库:
+   
+   ```bash
+   git clone https://github.com/realnoob007/ChatGPT-Share-Web.git
+   ```
+
+2. 将授权文件放入此文件夹
+
+3. 填写config.py与config.yaml中的内容
+
+4.
+  ```bash
+  docker compose pull
+  docker compose up -d
+  ```
+
+5. 查看初始管理员账号密码:
+   
+  ```bash
+  docker compose logs web
+  ```
+
+重要！！！ 请在成功部署后将docker-compose.yml中的web环境变量中的FIRST_RUN改为False
+
 
 ## 定价
 
