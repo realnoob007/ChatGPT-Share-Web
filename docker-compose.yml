@@ -1,21 +1,75 @@
-version: '3'
+version: '3.8'
 services:
   web:
     image: chasney/chatgpt-share-web:latest
+    restart: always
     ports:
-      - "3003:5000"
+      - "3000:5000"
     volumes:
       - ./config.py:/app/config.py
       - ./instance:/app/instance
-      - ./dist/favicon.ico:/app/dist/favicon.ico
     depends_on:
       - redis
     environment:
       - REDIS_URL=redis://redis:6379
-      - FIRST_RUN=True
-
-
+      - FIRST_RUN=True #请在第一次成功部署之后改为False
+  mysql:
+    image: mysql:8
+    command: --default-authentication-plugin=mysql_native_password --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+    restart: always
+    volumes:
+      - ./data/mysql/:/var/lib/mysql/
+      - ./docker-entrypoint-initdb.d/:/docker-entrypoint-initdb.d/
+    environment:
+      TZ: Asia/Shanghai # 指定时区
+      MYSQL_ROOT_PASSWORD: "123456" # 配置root用户密码
+      MYSQL_DATABASE: "cool" # 业务库名
+      MYSQL_USER: "cool" # 业务库用户名
+      MYSQL_PASSWORD: "123123" # 业务库密码
   redis:
     image: redis
+    # command: --requirepass "12345678" # redis库密码,不需要密码注释本行
+    restart: always
+    environment:
+      TZ: Asia/Shanghai # 指定时区
+    volumes:
+      - ./data/redis/:/data/
+  chatgpt-share-server:
+    image: xyhelper/chatgpt-share-server:latest
+    restart: always
     ports:
-      - "6380:6379"
+      - 8300:8001
+    environment:
+      TZ: Asia/Shanghai # 指定时区
+      # 接入网关地址
+      CHATPROXY: "https://demo.xyhelper.cn"
+      # 接入网关的authkey
+      AUTHKEY: "xyhelper"
+      # 内容审核及速率限制
+      AUDIT_LIMIT_URL: "http://auditlimit:8080/audit_limit"
+    volumes:
+      - ./config.yaml:/app/config.yaml
+      - ./data/chatgpt-share-server/:/app/data/
+      - ./list.js:/app/resource/public/list.js
+    labels:
+      - "com.centurylinklabs.watchtower.scope=xyhelper-chatgpt-share-server"
+  auditlimit:
+    image: xyhelper/auditlimit # 限速服务，可以限制每个用户使用的次数
+    restart: always
+    # ports:
+    #   - 9611:8080
+    environment:
+      LIMIT: 40  # 限制每个userToken允许的次数
+      PER: "3h" # 限制周期 1s, 1m, 1h, 1d, 1w, 1y
+    labels:
+      - "com.centurylinklabs.watchtower.scope=xyhelper-chatgpt-share-server"
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --scope xyhelper-chatgpt-share-server --cleanup
+    restart: always
+    environment:
+      - TZ=Asia/Shanghai
+    labels:
+      - "com.centurylinklabs.watchtower.scope=xyhelper-chatgpt-share-server"
