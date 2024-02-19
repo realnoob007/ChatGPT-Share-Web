@@ -9,6 +9,7 @@ services:
       - ./config.py:/app/config.py
       - ./instance:/app/instance
     depends_on:
+      - chatgpt-share-server
       - redis
     environment:
       - REDIS_URL=redis://redis:6379
