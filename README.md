@@ -113,19 +113,24 @@
    git clone https://github.com/realnoob007/ChatGPT-Share-Web.git
    ```
 
-2. 将授权文件放入此文件夹
+2. 进入ChatGPT-Share-Web文件夹
 
-3. 填写config.py与config.yaml中的内容
+   ```bash
+   cd ChatGPT-Share-Web
+   ```
+3. 将授权文件放在 ChatGPT-Share-Web 文件夹中
 
-4. 请提前配置好反代，确保域名能够正常访问，数据库需要能够访问share来初始化管理员
+4. 填写config.py与config.yaml中的内容
+
+5. 请提前配置好反代，确保域名能够正常访问，数据库需要能够访问share来初始化管理员
    
-5.
+6.
   ```bash
   docker compose pull
   docker compose up -d
   ```
 
-6. 查看初始管理员账号密码:
+7. 查看初始管理员账号密码:
    
   ```bash
   docker compose logs web
