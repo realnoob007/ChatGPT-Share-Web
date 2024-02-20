@@ -143,6 +143,9 @@ v1.0.0 版本目前的定价为 ￥400/年。随着版本更新和功能的增�
 - **微信**: lebronajams101
 
   <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/cd942031-ddff-4a9c-8444-5867207b585c" width="320">
+- **微信**: Csg1271932463
+
+  <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/37624778/8423d852-239d-4e09-a093-9359f3a7f7c5" width="320">
 
 我们期待与您的联系，共同探讨合作机会。
 
