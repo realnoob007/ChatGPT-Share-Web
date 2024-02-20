@@ -131,13 +131,17 @@
   ./deploy.sh
   ```
 
-7. 查看初始管理员账号密码:
+7. 查看初始管理员账号密码: （若能查看到管理员账号和密码，说明已部署成功）
    
   ```bash
   docker compose logs web
   ```
 
-重要！！！ 请在成功部署后将docker-compose.yml中的web环境变量中的FIRST_RUN改为False
+ ### 8. 成功部署后，请务必将docker-compose.yml中的web环境变量中的FIRST_RUN改为False
+
+<img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/37624778/7c66da07-6d60-4b73-8747-65e661930a31" width="320">
+
+### 此步骤尤为重要，否则可能导致后续更新项目时，重建数据库，导致数据丢失。请确保完成该步骤！否则后续数据丢失无法恢复！切记！！！
 
 
 ## 定价
