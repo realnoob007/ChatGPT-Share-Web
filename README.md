@@ -124,10 +124,11 @@
 
 5. 请提前配置好反代，确保域名能够正常访问，数据库需要能够访问share来初始化管理员
    
-6.
+6. 运行deploy.sh
+   
   ```bash
-  docker compose pull
-  docker compose up -d
+  sudo chmod +x deploy.sh
+  ./deploy.sh
   ```
 
 7. 查看初始管理员账号密码:
