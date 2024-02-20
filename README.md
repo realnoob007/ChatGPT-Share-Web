@@ -117,13 +117,15 @@
 
 3. 填写config.py与config.yaml中的内容
 
-4.
+4. 请提前配置好反代，确保域名能够正常访问，数据库需要能够访问share来初始化管理员
+   
+5.
   ```bash
   docker compose pull
   docker compose up -d
   ```
 
-5. 查看初始管理员账号密码:
+6. 查看初始管理员账号密码:
    
   ```bash
   docker compose logs web
