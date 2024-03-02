@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   web:
-    image: chasney/chatgpt-share-web:v1.0.0
+    image: chasney/chatgpt-share-web:v1.1.0
     ports:
       - "3000:5000"
     volumes:
