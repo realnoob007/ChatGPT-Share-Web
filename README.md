@@ -1,4 +1,4 @@
-# ChatGPT-Share-Web [演示站点](https://web.planetzero.cn)
+# ChatGPT-Share-Web [演示站点：请点击此处](https://web.planetzero.cn)
 
 欢迎来到我们基于ChatGPT-Share开发的商业版镜像站的部署仓库。本项目旨在提供完全代理ChatGPT官网，包含完整的用户系统，对接官方ChatGPT网站的全部功能，集成无缝支付系统，以及管理员后台面板，实现全面的站点管理。
 
