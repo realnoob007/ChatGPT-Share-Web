@@ -128,7 +128,7 @@
    ```
 3. 将授权文件放在 ChatGPT-Share-Web 文件夹中
 
-4. 填写config.py与config.yaml中的内容
+4. 填写config.yaml中的内容
 
 5. 请提前配置好反代，确保域名能够正常访问，数据库需要能够访问share来初始化管理员
    
@@ -151,6 +151,44 @@
 
 ### 此步骤尤为重要，否则可能导致后续更新项目时，重建数据库，导致数据丢失。请确保完成该步骤！否则后续数据丢失无法恢复！切记！！！
 
+## 更新教程（之前买过v1版本的才需要进行以下处理）
+1. **重要**: 执行 docker compose down 关闭服务器，然后务必先把cockes.sqlite进行备份(复制一份即可，防止数据丢失)
+2. 将服务器中的cockes.sqlite在本地中打开，navicat、SQLiteStudio等都可以
+3. 打开之后执行以下代码，添加新的表
+```bash
+CREATE TABLE exchange (
+    id          INTEGER      NOT NULL,
+    code        VARCHAR (18),
+    user_id     INTEGER,
+    product_id  INTEGER,
+    status      INTEGER,
+    expire_time DATETIME,
+    is_deleted  INTEGER,
+    PRIMARY KEY (
+        id
+    ),
+    UNIQUE (
+        code
+    ),
+    FOREIGN KEY (
+        user_id
+    )
+    REFERENCES user (id),
+    FOREIGN KEY (
+        product_id
+    )
+    REFERENCES product (id) 
+);
+```
+4. 然后更新一下配置数据：
+```bash
+INSERT INTO config_item (key, value) VALUES ('INVITER_DAY', '3');
+INSERT INTO config_item (key, value) VALUES ('BE_INVITED_DAY', '2');
+```
+5. 再将这个更新后的数据库替换掉原来的cockes.sqlite
+6. 更新config.yaml：需要将原来的config.py的配置移动到config.yaml
+7. 执行docker compose up
+
 ## 后台配置
 1. 成功部署后，请访问 **门户地址+/admin/login** 使用管理员账号和密码登录管理界面。在配置中心中配置基础信息，否则新用户将无法注册登录。
 
@@ -162,14 +200,20 @@
    **通知地址**的格式为: https://门户域名/pay/payment_notification
    **回调地址**的格式为：https://门户域名
 
-5. 运营配置中，
+4. 运营配置中，
 注册免费时间(天)：指的是可以使用3.5的时间。例如，配置为36500，就是将近100年的免费时间，用户注册后就可以免费使用3.5。
 
 注册是否赠送Plus： 如果选择是，请务必配置天数，默认为1，表示注册后将有1天使用GPT4.0的有效期。如果选择否，用户注册后将不会赠送GPT4.0的有效期。
 
 <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/37624778/0a2fb894-ca84-4adc-bfa5-676af3ae1ec2" width="320">
 
-5. 配置完成后，请到 **会话地址+/xyhelper** 登录会话管理后台。账号：admin，密码：123456。登录后，请务必及时修改您的密码。然后在**账号管理**中配置GPT官方账号信息。只有有了账号，用户登录后才可以使用GPT的相关功能。
+5. 配置完成后，请到 **会话地址+/xyhelper** 登录管理后台。账号：admin，密码：123456。登录后，请务必及时修改您的密码。然后在**账号管理**中配置GPT官方账号信息。只有有了账号，用户登录后才可以使用GPT的相关功能。
+
+6. 如果需要为管理员配置token，请到**会话地址+/xyhelper**登录，然后在用户管理界面中为添加管理员。
+   
+<img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/37624778/5bc1de37-bba7-41a3-a3f3-24c0100fa276" width="320">
+
+<img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/37624778/0a265d41-3fa2-48a7-a821-91a9421eae6e" width="320">
    
 ## 定价
 
