@@ -1,11 +1,11 @@
 version: '3.8'
 services:
   web:
-    image: chasney/chatgpt-share-web:v1.1.0
+    image: chasney/chatgpt-share-web:v2.0.0
     ports:
       - "3000:5000"
     volumes:
-      - ./config.py:/app/config.py
+      - ./config.yaml:/app/config.yaml
       - ./instance:/app/instance
     depends_on:
       - chatgpt-share-server
