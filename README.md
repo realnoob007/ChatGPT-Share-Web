@@ -184,6 +184,7 @@ CREATE TABLE exchange (
 ```bash
 INSERT INTO config_item (key, value) VALUES ('INVITER_DAY', '3');
 INSERT INTO config_item (key, value) VALUES ('BE_INVITED_DAY', '2');
+INSERT INTO config_item (key, value) VALUES ('SMTP_WHITE_LIST', '@qq.com,@gmail.com,@outlook.com,@126.com,@163.com,@hotmail.com');
 ```
 5. 再将这个更新后的数据库替换掉原来的cockes.sqlite
 6. 更新config.yaml：需要将原来的config.py的配置移动到config.yaml
