@@ -9,6 +9,7 @@
 ## 功能特点
 
 - **完整的用户系统**：图形验证码、邮箱、手机号注册、登录、忘记密码及管理个人资料。
+- **独享体验**：用户聊天记录隔离，保证用户隐私，将共享打造成独享的用户体验。
 - **1:1的官网UI**：跟随官网更新的UI系统，提供与官网一模一样的体验感。
 - **全面的ChatGPT功能接入**：直接从我们的平台访问ChatGPT的所有特性：3.5, 4.0, 插件，联网，画图，高级分析等全部官网功能。
 - **账号池机制**：以账号池为基石，用户随意切换流动于所有开放的账户，用最高效的运营模式，确保最大化收益。
@@ -25,8 +26,8 @@
   <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/9785df93-050b-43ae-8b63-b70507f3515f" width="640">
 
 - **注册页面**
-
-  <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/58fd2eb7-2297-42f1-a917-892345c0e004" width="640">
+  
+  <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/1b992468-674e-4b1d-a5e6-254964aaa87e" width="640">
 
 - **重置密码**
 
@@ -51,11 +52,11 @@
 
 - **个人中心**
 
-  <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/537f6bf8-d7cb-49f7-a182-fcbde8be13a0" width="320">
+  <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/537f6bf8-d7cb-49f7-a182-fcbde8be13a0" width="640">
 
 - **可弹出公告**
 
-  <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/8d8742d6-5dca-431a-8a7e-882a1dafa62d" width="640">
+  <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/87698941/f3fbe0b7-ee28-4c72-9d8b-82f23428d954" width="640">
 
 - **订阅服务**
   
@@ -183,7 +184,7 @@ v2.0.0版本定价: ￥600/年
 ## 更新日志
 
 ### v2.0.0
-- 优化登录跳转逻辑，增加空闲车的优先级
+- 优化登录跳转逻辑，增加空闲账号的优先级
 - 修复smtp邮箱发件有些邮箱的连接问题
 - 支持邮箱白名单设置
 - 初始化配置项迁移至config.yaml，简化部署流程
