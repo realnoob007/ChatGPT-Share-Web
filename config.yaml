@@ -1,3 +1,27 @@
+web:
+  SHARE_API_URL: "/adminapi/chatgpt/"
+  SHARE_ADDR : "https://xxx.com"
+  SHARE_API_AUTH : "xxx"
+  # 此部分无需修改
+  SQLALCHEMY_DATABASE_URI: 'sqlite:///cockes.sqlite'
+  SQLALCHEMY_TRACK_MODIFICATIONS: False
+  JWT_TOKEN_LOCATION: ['headers']
+  JWT_COOKIE_SECURE: True
+  JWT_COOKIE_CSRF_PROTECT: False
+  REDIS_HOST: 'redis'
+  REDIS_PORT: 6379
+  REDIS_DB: 1
+  REDIS_PASSWORD: ''
+  SECRET_KEY : 'xxx' # 更换为一个强随机值
+  SECURITY_PASSWORD_SALT : 'xxx'  # 更换为一个强随机值
+  JWT_SECRET_KEY : 'xxx'  # 更换为一个强随机值
+  JWT_ACCESS_TOKEN_EXPIRES : 50400  # JWT 访问令牌有效期（单位：秒），例如3600秒（1小时）
+  CHAR_SET : ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9',
+              'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm',
+              'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',
+              'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
+              'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z']
+
 database:
   default: # 数据源名称,当不指定数据源时 default 为默认数据源
     type: "mysql" # 数据库类型
