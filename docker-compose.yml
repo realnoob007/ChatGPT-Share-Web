@@ -51,7 +51,6 @@ services:
       - ./config.yaml:/app/config.yaml
       - ./data/chatgpt-share-server/:/app/data/
       - ./list.js:/app/resource/public/list.js
-      - ./list:/app/resource/public/list
     labels:
       - "com.centurylinklabs.watchtower.scope=xyhelper-chatgpt-share-server"
   auditlimit:
