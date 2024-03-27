@@ -6,6 +6,8 @@
 
 本项目的用户聊天系统基于xyhelper的[ChatGPT-Share-Server](https://github.com/xyhelper/chatgpt-share-server)，感谢xyhelper提供的免费接入点！
 
+现已新增自建网关方案(无限速，高速直连，用于替换xyhelper网关)
+
 ## 功能特点
 
 - **完整的用户系统**：图形验证码、邮箱、手机号注册、登录、忘记密码及管理个人资料。
@@ -13,7 +15,7 @@
 - **1:1的官网UI**：跟随官网更新的UI系统，提供与官网一模一样的体验感。
 - **全面的ChatGPT功能接入**：直接从我们的平台访问ChatGPT的所有特性：3.5, 4.0, 插件，联网，画图，高级分析等全部官网功能。
 - **账号池机制**：以账号池为基石，用户随意切换流动于所有开放的账户，用最高效的运营模式，确保最大化收益。
-- **支付系统集成**：填入相关服务参数即可实时收款、购买积分或服务。
+- **支付系统集成**：支持易支付，蓝兔支付。填入相关服务参数即可实时收款、购买积分或服务。
 - **分销代理机制**：一键批量生成兑换码，可放置发卡网进行销售
 - **管理员后台**：从集中的面板管理用户、创建营销活动、查看分析数据和控制站点设置。
   
@@ -129,17 +131,15 @@
 3. 将授权文件放在 ChatGPT-Share-Web 文件夹中
 
 4. 填写config.yaml中的内容
-
-5. 请提前配置好反代，确保域名能够正常访问，数据库需要能够访问share来初始化管理员
    
-6. 运行deploy.sh
+5. 运行deploy.sh
    
   ```bash
   sudo chmod +x deploy.sh
   ./deploy.sh
   ```
 
-7. 查看初始管理员账号密码: （若能查看到管理员账号和密码，说明已部署成功）
+6. 查看初始管理员账号密码: （若能查看到管理员账号和密码，说明已部署成功）
    
   ```bash
   docker compose logs web
@@ -151,44 +151,25 @@
 
 ### 此步骤尤为重要，否则可能导致后续更新项目时，重建数据库，导致数据丢失。请确保完成该步骤！否则后续数据丢失无法恢复！切记！！！
 
-## 更新教程（之前买过v1版本的才需要进行以下处理）
-1. **重要**: 执行 docker compose down 关闭服务器，然后务必先把cockes.sqlite进行备份(复制一份即可，防止数据丢失)
-2. 将服务器中的cockes.sqlite在本地中打开，navicat、SQLiteStudio等都可以
-3. 打开之后执行以下代码，添加新的表
-```bash
-CREATE TABLE exchange (
-    id          INTEGER      NOT NULL,
-    code        VARCHAR (18),
-    user_id     INTEGER,
-    product_id  INTEGER,
-    status      INTEGER,
-    expire_time DATETIME,
-    is_deleted  INTEGER,
-    PRIMARY KEY (
-        id
-    ),
-    UNIQUE (
-        code
-    ),
-    FOREIGN KEY (
-        user_id
-    )
-    REFERENCES user (id),
-    FOREIGN KEY (
-        product_id
-    )
-    REFERENCES product (id) 
-);
-```
-4. 然后更新一下配置数据：
-```bash
-INSERT INTO config_item (key, value) VALUES ('INVITER_DAY', '3');
-INSERT INTO config_item (key, value) VALUES ('BE_INVITED_DAY', '2');
-INSERT INTO config_item (key, value) VALUES ('SMTP_WHITE_LIST', '@qq.com,@gmail.com,@outlook.com,@126.com,@163.com,@hotmail.com');
-```
-5. 再将这个更新后的数据库替换掉原来的cockes.sqlite
-6. 更新config.yaml：需要将原来的config.py的配置移动到config.yaml
-7. 执行docker compose up
+## 更新教程
+1. **重要**: 执行 docker compose down 关闭服务器
+  ```bash
+  docker compose down
+  ```
+2. 把instance数据库文件夹进行备份(复制一份即可，防止数据丢失)
+  ```bash
+  cp -r instance instance.bak
+  ```
+3. 拉取最新镜像
+ ```bash
+  docker compose pull
+ ```
+
+4. 重新启动站点
+  ```bash
+  docker compose up -d
+  ```
+
 
 ## 后台配置
 1. 成功部署后，请访问 **门户地址+/admin/login** 使用管理员账号和密码登录管理界面。在配置中心中配置基础信息，否则新用户将无法注册登录。
@@ -226,8 +207,26 @@ v2.0.0版本定价: ￥600/年
 
 代部署费用: ￥200
 
+新增自建网关方案(无限速，高速直连，用于替换xyhelper网关):
+
+5个子节点及以下: ￥800/年
+
+更多节点：联系开发者详谈
+
 ## 更新日志
 
+### v2.1.0 (已支持自建网关方案, 可替代xyhelper网关)
+- 支持易支付
+- 支持关闭邮箱白名单设置(填入*即可)
+- 增加开关购买功能(是否显示订阅服务的商品项)
+- 支持关闭公告
+- 优化管理面板
+- 修复当账号异常时的跳转错误
+- 修复公告遮挡workspace选择窗口的问题
+- 修复手机端换车侧边栏显示不全的问题
+- 修复兑换码增加时间的逻辑
+- 修复重置密码邮箱验证码的发送问题
+  
 ### v2.0.0
 - 优化登录跳转逻辑，增加空闲账号的优先级
 - 修复smtp邮箱发件有些邮箱的连接问题
