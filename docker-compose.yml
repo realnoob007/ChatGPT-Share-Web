@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   web:
-    image: chasney/chatgpt-share-web:v2.1.0
+    image: chasney/chatgpt-share-web:v2.2.0
     ports:
       - "3000:5000"
     volumes:
@@ -48,6 +48,7 @@ services:
       # 内容审核及速率限制
       AUDIT_LIMIT_URL: "http://auditlimit:8080/audit_limit"
     volumes:
+      - ./list:/app/resource/public/list
       - ./config.yaml:/app/config.yaml
       - ./data/chatgpt-share-server/:/app/data/
       - ./list.js:/app/resource/public/list.js
