@@ -49,6 +49,9 @@ cool:
     mode: "local"
     domain: "http://127.0.0.1:8300"
 
+server:
+    clientMaxBodySize:   810241024          # 客户端最大Body上传限制大小，影响文件上传大小(Byte)。默认为8*1024*1024=8MB
+
 modules:
   base:
     jwt:
