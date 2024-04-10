@@ -4,9 +4,7 @@
 
 ## 特别鸣谢
 
-本项目的用户聊天系统基于xyhelper的[ChatGPT-Share-Server](https://github.com/xyhelper/chatgpt-share-server)，感谢xyhelper提供的免费接入点！
-
-现已新增自建网关方案(无限速，高速直连，用于替换xyhelper网关)
+本项目的用户聊天系统基于xyhelper的[ChatGPT-Share-Server](https://github.com/xyhelper/chatgpt-share-server)，欢迎使用xyhelper的接入点服务！
 
 ## 功能特点
 
@@ -208,12 +206,6 @@ v2.0.0版本定价: ￥600/年
 
 代部署费用: ￥200
 
-新增自建网关方案(无限速，高速直连，用于替换xyhelper网关):
-
-5个子节点及以下: ￥500/月
-
-更多节点：联系开发者详谈
-
 ## 更新日志
 
 ### v2.2.0 (已支持限制设备数)
@@ -222,7 +214,7 @@ v2.0.0版本定价: ￥600/年
 - 增加手动打开公告按钮
 - 修复注册页面的一些bug
   
-### v2.1.0 (已支持自建网关方案, 可替代xyhelper网关)
+### v2.1.0 (已支持自建网关方案)
 - 支持易支付
 - 支持关闭邮箱白名单设置(填入*即可)
 - 增加开关购买功能(是否显示订阅服务的商品项)
