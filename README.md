@@ -4,7 +4,8 @@
 
 ## 特别鸣谢
 
-本项目的用户聊天系统基于xyhelper的[ChatGPT-Share-Server](https://github.com/xyhelper/chatgpt-share-server)，欢迎使用xyhelper的接入点服务！
+本项目的用户聊天系统基于xyhelper的[ChatGPT-Share-Server](https://github.com/xyhelper/chatgpt-share-server)，本项目仅支持xyhelper的[接入点服务](https://xyhelper.cn/about/)！
+
 
 ## 功能特点
 
@@ -214,7 +215,7 @@ v2.0.0版本定价: ￥600/年
 - 增加手动打开公告按钮
 - 修复注册页面的一些bug
   
-### v2.1.0 (已支持自建网关方案)
+### v2.1.0
 - 支持易支付
 - 支持关闭邮箱白名单设置(填入*即可)
 - 增加开关购买功能(是否显示订阅服务的商品项)
