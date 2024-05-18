@@ -145,11 +145,14 @@
   docker compose logs web
   ```
 
- ### 8. 成功部署后，请务必将docker-compose.yml中的web环境变量中的FIRST_RUN改为False
+ ### 7. 成功部署后，请务必将docker-compose.yml中的web环境变量中的FIRST_RUN改为False
 
 <img src="https://github.com/realnoob007/ChatGPT-Share-Web/assets/37624778/7c66da07-6d60-4b73-8747-65e661930a31" width="320">
 
 ### 此步骤尤为重要，否则可能导致后续更新项目时，重建数据库，导致数据丢失。请确保完成该步骤！否则后续数据丢失无法恢复！切记！！！
+
+额外步骤: 需要将list目录下的index.html中的门户地址修改为自己的地址，用于跳转页面
+
 
 ## 更新教程
 1. **重要**: 执行 docker compose down 关闭服务器
