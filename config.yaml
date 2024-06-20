@@ -68,4 +68,5 @@ modules:
       log:
         enable: 1
 
+ALLOW_DUPLICATE_USER_TOKEN: true
 APIAUTH: 123456      
